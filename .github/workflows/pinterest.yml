@@ -1,8 +1,8 @@
-name: Pinterest Auto Pin Generator
+name: Pinterest Auto Pin Bot
 
 on:
   schedule:
-    - cron: '0 */2 * * *'
+    - cron: '0 */4 * * *'
 
   workflow_dispatch:
 
@@ -20,14 +20,14 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install Packages
+      - name: Install Dependencies
         run: npm install
 
-      - name: Run Bot
+      - name: Run Pinterest Bot
         run: node index.js
         env:
-          PINTEREST_ACCESS_TOKEN: ${{ secrets.PINTEREST_ACCESS_TOKEN }}
-          BOARD_ID: ${{ secrets.BOARD_ID }}
+          PINTEREST_EMAIL: ${{ secrets.PINTEREST_EMAIL }}
+          PINTEREST_PASSWORD: ${{ secrets.PINTEREST_PASSWORD }}
 
       - name: Commit Posted Data
         run: |
