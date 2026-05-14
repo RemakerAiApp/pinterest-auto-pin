@@ -27,11 +27,3 @@ jobs:
         env:
           PINTEREST_EMAIL: ${{ secrets.PINTEREST_EMAIL }}
           PINTEREST_PASSWORD: ${{ secrets.PINTEREST_PASSWORD }}
-
-      - name: Commit Posted Data
-        run: |
-          git config --global user.name "github-actions"
-          git config --global user.email "actions@github.com"
-          git add data/posted.json
-          git commit -m "Update Posted Pins" || echo "No changes"
-          git push
