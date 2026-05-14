@@ -1,20 +1,21 @@
-# Pinterest Auto Pin Generator
+# Pinterest Auto Pin Bot
 
 Features:
 
-- Auto detect WordPress posts
-- Extract all images
-- Create multiple Pinterest pins
-- AI titles
-- AI descriptions
-- Hashtags
-- Duplicate protection
-- Watermark support
-- GitHub Actions automation
+- Auto Pinterest Login
+- Auto Pin Upload
+- AI Titles
+- AI Descriptions
+- Auto Hashtags
+- Duplicate Protection
+- Watermark
+- Multiple Images Auto Pin
+- GitHub Actions Automation
+- WordPress Auto Fetch
 
 ## Setup
 
-1. Upload files to GitHub
+1. Upload all files to GitHub
 2. Add GitHub Secrets
 3. Enable GitHub Actions
-4. Done
+4. Run Workflow
