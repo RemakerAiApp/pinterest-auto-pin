@@ -1,0 +1,16 @@
+{
+  "name": "pinterest-auto-pin",
+  "version": "1.0.0",
+  "description": "Pinterest Auto Pin Bot",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "axios": "^1.6.7",
+    "cheerio": "^1.0.0-rc.12",
+    "fs-extra": "^11.2.0",
+    "sharp": "^0.33.2",
+    "puppeteer": "^22.8.2"
+  }
+}
