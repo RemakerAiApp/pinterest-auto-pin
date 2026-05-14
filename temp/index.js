@@ -1,15 +1,11 @@
 const axios = require("axios");
+
+      const src = $(el).attr("src");
+
       if (src) {
         images.push(src);
       }
     });
-
-    if (!images.length) {
-      console.log("No Images Found");
-      continue;
-    }
-
-    console.log(`Found ${images.length} images`);
 
     for (let i = 0; i < images.length; i++) {
 
@@ -24,30 +20,32 @@ const axios = require("axios");
 
       try {
 
-        const originalImage = path.join(TEMP_DIR, `original-${uniqueId}.jpg`);
-        const finalImage = path.join(TEMP_DIR, `final-${uniqueId}.jpg`);
+        const originalPath = path.join(TEMP_DIR, `original-${uniqueId}.jpg`);
+        const finalPath = path.join(TEMP_DIR, `final-${uniqueId}.jpg`);
 
         console.log("Downloading Image...");
 
-        await downloadImage(imageUrl, originalImage);
+        await downloadImage(imageUrl, originalPath);
 
         console.log("Adding Watermark...");
 
-        await addWatermark(originalImage, finalImage);
+        await addWatermark(originalPath, finalPath);
 
         const aiTitle = generateTitle(postTitle, i);
+
         const aiDescription = generateDescription(aiTitle);
 
-        console.log("Creating Pinterest Pin...");
+        console.log("Uploading Pinterest Pin...");
 
-        await createPinterestPin(
+        await createPin(
+          page,
+          finalPath,
           aiTitle,
           aiDescription,
-          imageUrl,
           postLink
         );
 
-        console.log("Pin Created Successfully:", aiTitle);
+        console.log("Pin Uploaded:", aiTitle);
 
         postedPins.push(uniqueId);
 
@@ -55,11 +53,13 @@ const axios = require("axios");
 
       } catch (err) {
 
-        console.log("Pinterest Error:");
-        console.log(err.response?.data || err.message);
+        console.log("Error:");
+        console.log(err.message);
       }
     }
   }
+
+  await browser.close();
 }
 
 processPosts();
